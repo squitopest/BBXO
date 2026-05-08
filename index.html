@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>BlossomBouquetsxo | Luxury Custom Bouquets</title>
+  <meta name="description" content="Handcrafted luxury bouquets for every occasion. Same-day delivery available.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Great+Vibes&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <script type="module" src="./main.js"></script>
+
+  <!-- Petals -->
+  <div class="petals-container" aria-hidden="true">
+    <div class="petal" style="--i:0"></div><div class="petal" style="--i:1"></div>
+    <div class="petal" style="--i:2"></div><div class="petal" style="--i:3"></div>
+    <div class="petal" style="--i:4"></div><div class="petal" style="--i:5"></div>
+    <div class="petal" style="--i:6"></div><div class="petal" style="--i:7"></div>
+    <div class="petal" style="--i:8"></div><div class="petal" style="--i:9"></div>
+    <div class="petal" style="--i:10"></div><div class="petal" style="--i:11"></div>
+    <div class="petal" style="--i:12"></div><div class="petal" style="--i:13"></div>
+    <div class="petal" style="--i:14"></div>
+  </div>
+
+  <!-- Splash Intro Overlay -->
+  <div id="splash-overlay" class="splash-overlay">
+    <video id="splashVideoDesktop" class="splash-video splash-desktop" muted playsinline>
+      <source src="/videos/intro-desktop.mp4" type="video/mp4">
+    </video>
+    <video id="splashVideoMobile" class="splash-video splash-mobile" muted playsinline>
+      <source src="/videos/intro-mobile.mp4" type="video/mp4">
+    </video>
+    <div class="splash-logo-wrapper" id="splashLogo">
+      <span class="splash-logo-text">Blossom</span>
+      <span class="splash-logo-text splash-logo-sub">Bouquetsxo</span>
+    </div>
+  </div>
+
+
+  <!-- Nav -->
+  <nav class="glass-nav" id="nav">
+    <div class="logo">BlossomBouquetsxo</div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#occasions">Bouquets</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Order Now</button>
+  </nav>
+
+  <main class="content-layer">
+
+    <!-- Announcement -->
+    <div class="announcement-bar">Mother's Day is coming! Same-Day Delivery on select bouquets &#x1F33A;</div>
+
+    <!-- HERO -->
+    <section id="hero" class="scroll-section hero-section">
+      <div class="hero-content">
+        <p class="hero-tagline">Handcrafted with Love</p>
+        <h1>Luxury Bouquets<br/>for Every Moment.</h1>
+        <p class="hero-sub">Custom arrangements designed to make your special moments unforgettable.</p>
+        <div class="hero-buttons">
+          <button class="cta-button" onclick="document.getElementById('occasions').scrollIntoView({behavior:'smooth'})">Browse Bouquets</button>
+          <button class="cta-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Custom Order</button>
+        </div>
+        <!-- Social Trust Indicators -->
+        <div class="trust-indicators">
+          <div class="trust-stats">
+            <div class="trust-stat">
+              <span class="trust-number">500+</span>
+              <span class="trust-label">Bouquets Delivered</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-stat">
+              <span class="trust-number">5.0<span class="trust-star">&#9733;</span></span>
+              <span class="trust-label">Average Rating</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-stat">
+              <span class="trust-number">3+</span>
+              <span class="trust-label">Years of Love</span>
+            </div>
+          </div>
+          <div class="trust-review" id="trustReview">
+            <div class="trust-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="trust-review-text" id="trustReviewText">"Absolutely stunning bouquet! She said yes instantly. Best decision ever."</p>
+            <span class="trust-review-author" id="trustReviewAuthor">— Jessica M.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY CAROUSEL -->
+    <section id="gallery" class="scroll-section">
+      <div class="section-header">
+        <p class="section-label">Our Work</p>
+        <h2>Gallery</h2>
+      </div>
+      <div class="carousel-container">
+        <button class="carousel-btn carousel-prev" onclick="moveCarousel(-1)" aria-label="Previous">&#8249;</button>
+        <div class="carousel-track-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide" onclick="openModal(0)"><img src="/images/bouquet-pink-proposal.jpg" alt="Pink proposal bouquet" loading="lazy"></div>
+            <div class="carousel-slide" onclick="openModal(1)"><img src="/images/bouquet-heic-2.jpg" alt="Red roses initials" loading="lazy"></div>
+            <div class="carousel-slide" onclick="openModal(2)"><img src="/images/bouquet-heic-3.jpg" alt="Birthday bouquet" loading="lazy"></div>
+            <div class="carousel-slide" onclick="openModal(3)"><img src="/images/bouquet-heic-4.jpg" alt="Mirror bouquet" loading="lazy"></div>
+            <div class="carousel-slide" onclick="openModal(4)"><img src="/images/bouquet-heic-1.jpg" alt="Garden romance" loading="lazy"></div>
+            <div class="carousel-slide" onclick="openModal(5)"><img src="/images/bouquet-babyshower.jpg" alt="Baby shower" loading="lazy"></div>
+            <div class="carousel-slide" onclick="openModal(6)"><img src="/images/bouquet-pink-closeup.jpg" alt="Pink closeup" loading="lazy"></div>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-next" onclick="moveCarousel(1)" aria-label="Next">&#8250;</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <p class="gallery-hint">🌸 Tap the one you love</p>
+    </section>
+
+    <!-- BOUQUETS -->
+    <section id="occasions" class="scroll-section">
+      <div class="section-header">
+        <p class="section-label">Our Collections</p>
+        <h2>For Every Occasion</h2>
+      </div>
+      <div class="product-grid">
+        <div class="product-card" onclick="openModal(0)">
+          <img src="/images/bouquet-pink-proposal.jpg" alt="24 Rose Bouquet" loading="lazy" class="product-image">
+          <h3>24 Rose Bouquet</h3>
+          <p class="product-desc">Pink roses, lilies & baby's breath with custom sash (1 color)</p>
+          <p class="price">$80</p>
+          <button class="add-to-cart">View Details</button>
+        </div>
+        <div class="product-card" onclick="openModal(1)">
+          <img src="/images/bouquet-heic-2.jpg" alt="50 Rose Bouquet" loading="lazy" class="product-image">
+          <h3>50 Rose Bouquet</h3>
+          <p class="product-desc">Red roses with baby's breath lettering & pearl trim (up to 2 colors)</p>
+          <p class="price">$150</p>
+          <button class="add-to-cart">View Details</button>
+        </div>
+        <div class="product-card" onclick="openModal(2)">
+          <img src="/images/bouquet-heic-3.jpg" alt="75 Rose Bouquet" loading="lazy" class="product-image">
+          <h3>75 Rose Bouquet</h3>
+          <p class="product-desc">White roses with pearl accents & butterfly details (up to 3 colors)</p>
+          <p class="price">$180</p>
+          <button class="add-to-cart">View Details</button>
+        </div>
+        <div class="product-card" onclick="openModal(3)">
+          <img src="/images/bouquet-heic-4.jpg" alt="100 Rose Bouquet" loading="lazy" class="product-image">
+          <h3>100 Rose Bouquet</h3>
+          <p class="product-desc">Red roses with designer ribbon & engraved mirror (up to 4 colors)</p>
+          <p class="price">$260</p>
+          <button class="add-to-cart">View Details</button>
+        </div>
+        <div class="product-card" onclick="openModal(4)">
+          <img src="/images/bouquet-heic-1.jpg" alt="Garden Romance" loading="lazy" class="product-image">
+          <h3>Garden Romance</h3>
+          <p class="product-desc">Pink roses, gerbera daisies & stargazer lily with Dior wrap</p>
+          <p class="price">Starting at $80</p>
+          <button class="add-to-cart">View Details</button>
+        </div>
+        <div class="product-card" onclick="openModal(5)">
+          <img src="/images/bouquet-babyshower.jpg" alt="Baby Shower" loading="lazy" class="product-image">
+          <h3>Baby Shower</h3>
+          <p class="product-desc">Themed bouquets with plush, sunflowers & custom banner</p>
+          <p class="price">Starting at $110</p>
+          <button class="add-to-cart">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Request CTA -->
+    <section class="scroll-section" style="min-height:auto;padding:3rem 3rem 0;">
+      <div class="custom-cta-block">
+        <p class="custom-cta-tagline">Don't see exactly what you're looking for?</p>
+        <h3 class="custom-cta-heading">Create Your Dream Bouquet</h3>
+        <p class="custom-cta-desc">Upload a reference image and tell us your vision — we'll bring it to life.</p>
+        <button class="cta-button custom-cta-btn" onclick="openModal(6)">Start Custom Order ✨</button>
+      </div>
+    </section>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="scroll-section">
+      <div class="section-header">
+        <p class="section-label">Our Story</p>
+        <h2>About Us</h2>
+      </div>
+      <div class="about-wrapper">
+        <div class="about-card glass-card">
+          <p class="about-text">At <strong>BlossomBouquetsxo</strong>, every bouquet is a labor of love. What started as a passion for creating beautiful floral arrangements has grown into a boutique floral studio serving Long Island and surrounding areas.</p>
+          <p class="about-text">We specialize in <em>luxury custom bouquets</em> for life's most memorable moments — proposals, anniversaries, birthdays, baby showers, and everything in between. Each arrangement is handcrafted with premium roses, stargazer lilies, and unique accents like designer wrapping, custom sashes, and butterfly details.</p>
+          <p class="about-text">Every bouquet is made with love, care, and detail.</p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">&#x1F339;</span>
+              <strong>Handcrafted</strong>
+              <p>Every arrangement made to order</p>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">&#x1F4E6;</span>
+              <strong>Same-Day Delivery</strong>
+              <p>Long Island & surrounding areas</p>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">&#x2728;</span>
+              <strong>Fully Custom</strong>
+              <p>Designer wrap, mirrors, sashes & more</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING & POLICY -->
+    <section id="pricing" class="scroll-section">
+      <div class="section-header">
+        <p class="section-label">Transparent Pricing</p>
+        <h2>Pricing & Add-ons</h2>
+      </div>
+      <div class="pricing-wrapper">
+        <div class="pricing-card glass-card">
+          <h3>Add-ons</h3>
+          <ul class="policy-list">
+            <li>Crown (Large) — $10</li>
+            <li>Baby Breath Letter — $20</li>
+            <li>Baby Breath Heart — $10</li>
+            <li>Banner — $10</li>
+            <li>Other Flowers — $20</li>
+            <li>Teddy Bear — $10+</li>
+            <li>Mirror + Custom Vinyl — $20</li>
+          </ul>
+          <p class="pricing-note">Every bouquet includes 2 complimentary add-ons.</p>
+        </div>
+        <div class="pricing-card glass-card">
+          <h3>Complimentary</h3>
+          <p class="pricing-sub">Included upon request:</p>
+          <ul class="policy-list">
+            <li>Butterflies</li>
+            <li>Lights</li>
+            <li>Small or Medium Crown</li>
+            <li>Rhinestone Pins</li>
+            <li>Designer Wrapping (Chanel, Dior, LV)</li>
+            <li>Ribbon Bow &amp; Pearl Bow</li>
+            <li>Glitter Roses</li>
+          </ul>
+        </div>
+        <div class="pricing-card glass-card">
+          <h3>Policies</h3>
+          <ul class="policy-list">
+            <li><strong>Order:</strong> 50% deposit required. Balance due before delivery/pickup.</li>
+            <li><strong>Delivery:</strong> Long Island & area. $5–$15+. Free on 75+ roses.</li>
+            <li><strong>Custom:</strong> Handmade; may vary slightly. We maintain your style & colors.</li>
+            <li><strong>Refund:</strong> All sales final. Deposits non-refundable.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="scroll-section contact-section">
+      <video class="contact-bg-video" autoplay muted loop playsinline>
+        <source src="/videos/flowers-falling.mp4" type="video/mp4">
+      </video>
+      <div class="contact-overlay"></div>
+      <div class="contact-content glass-card">
+        <h2>Let's Create Something Beautiful</h2>
+        <p>Fill out the form below or give us a call.</p>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will get back to you shortly.');">
+          <div class="form-row">
+            <input type="text" placeholder="Your Name" required id="contact-name">
+            <input type="email" placeholder="Your Email" required id="contact-email">
+          </div>
+          <input type="tel" placeholder="Phone Number" id="contact-phone">
+          <select id="contact-occasion">
+            <option value="" disabled selected>Select Occasion</option>
+            <option>Proposal</option><option>Anniversary</option>
+            <option>Birthday</option><option>Baby Shower</option>
+            <option>Just Because</option><option>Other</option>
+          </select>
+          <textarea placeholder="Tell us about your dream bouquet..." rows="4" id="contact-message"></textarea>
+          <button type="submit" class="cta-button form-submit">Send Inquiry</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="footer-logo">BlossomBouquetsxo</span>
+          <p>Handcrafted luxury bouquets for every occasion.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#hero">Home</a><a href="#occasions">Bouquets</a>
+          <a href="#gallery">Gallery</a><a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 BlossomBouquetsxo. All rights reserved.</p>
+    </footer>
+
+  </main>
+
+  <!-- PRODUCT MODAL / ORDER BUILDER -->
+  <div class="modal-overlay" id="productModal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="" class="modal-image">
+        <div class="modal-details">
+          <h2 id="modalTitle"></h2>
+          <p class="price" id="modalPrice"></p>
+          <p id="modalDesc"></p>
+
+          <hr class="modal-divider">
+
+          <!-- Add-ons -->
+          <h3>Add-ons <span class="addon-hint">Select extras for your bouquet</span></h3>
+          <div class="addon-grid" id="addonGrid">
+            <label class="addon-item">
+              <input type="checkbox" data-price="10" data-name="Crown (Large)">
+              <span class="addon-card"><span class="addon-name">Crown (Large)</span><span class="addon-price">+$10</span></span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" data-price="20" data-name="Baby Breath Letter">
+              <span class="addon-card"><span class="addon-name">Baby Breath Letter</span><span class="addon-price">+$20</span></span>
+              <input type="text" class="addon-desc" placeholder="What letter(s)?" onclick="event.stopPropagation()">
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" data-price="10" data-name="Baby Breath Heart">
+              <span class="addon-card"><span class="addon-name">Baby Breath Heart</span><span class="addon-price">+$10</span></span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" data-price="10" data-name="Banner">
+              <span class="addon-card"><span class="addon-name">Banner</span><span class="addon-price">+$10</span></span>
+              <input type="text" class="addon-desc" placeholder="What text on the banner?" onclick="event.stopPropagation()">
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" data-price="20" data-name="Other Flowers">
+              <span class="addon-card"><span class="addon-name">Other Flowers</span><span class="addon-price">+$20</span></span>
+              <input type="text" class="addon-desc" placeholder="Which flowers would you like?" onclick="event.stopPropagation()">
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" data-price="10" data-name="Teddy Bear">
+              <span class="addon-card"><span class="addon-name">Teddy Bear</span><span class="addon-price">+$10</span></span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" data-price="20" data-name="Mirror + Custom Vinyl">
+              <span class="addon-card"><span class="addon-name">Mirror + Vinyl</span><span class="addon-price">+$20</span></span>
+              <input type="text" class="addon-desc" placeholder="What text on the mirror?" onclick="event.stopPropagation()">
+            </label>
+          </div>
+
+          <hr class="modal-divider">
+
+          <!-- Complimentary -->
+          <h3>Complimentary <span class="addon-hint">Choose up to 2 — <span id="compCount">0</span>/2 selected</span></h3>
+          <div class="comp-grid" id="compGrid">
+            <label class="comp-item"><input type="checkbox" data-name="Butterflies"><span class="comp-card">🦋 Butterflies</span></label>
+            <label class="comp-item"><input type="checkbox" data-name="Lights"><span class="comp-card">✨ Lights</span></label>
+            <label class="comp-item"><input type="checkbox" data-name="Small/Medium Crown"><span class="comp-card">👑 Small/Med Crown</span></label>
+            <label class="comp-item"><input type="checkbox" data-name="Rhinestone Pins"><span class="comp-card">💎 Rhinestone Pins</span></label>
+            <label class="comp-item"><input type="checkbox" data-name="Designer Wrapping"><span class="comp-card">🎀 Designer Wrap</span></label>
+            <label class="comp-item"><input type="checkbox" data-name="Ribbon & Pearl Bow"><span class="comp-card">🎗️ Ribbon & Pearl Bow</span></label>
+            <label class="comp-item"><input type="checkbox" data-name="Glitter Roses"><span class="comp-card">✨ Glitter Roses</span></label>
+          </div>
+
+          <hr class="modal-divider">
+
+          <!-- Order Total -->
+          <div class="order-total" id="orderTotal">
+            <span class="order-total-label">Estimated Total</span>
+            <span class="order-total-price" id="orderTotalPrice">$0</span>
+          </div>
+
+          <hr class="modal-divider">
+
+          <!-- Contact Info -->
+          <h3>Your Details</h3>
+          <div class="order-contact">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" required id="orderName">
+              <input type="email" placeholder="Your Email" required id="orderEmail">
+            </div>
+            <input type="tel" placeholder="Phone Number" id="orderPhone">
+            <textarea placeholder="Any special requests or notes..." rows="3" id="orderNotes"></textarea>
+            <div class="upload-area" id="uploadArea" style="display:none">
+              <label class="upload-label" for="orderImages">
+                <span class="upload-icon">📷</span>
+                <span class="upload-text">Upload reference images</span>
+                <span class="upload-hint">Tap to select from camera roll</span>
+              </label>
+              <input type="file" id="orderImages" accept="image/*" multiple capture="environment" style="display:none" onchange="handleImageUpload(this)">
+              <div class="upload-preview" id="uploadPreview"></div>
+            </div>
+          </div>
+
+          <button class="cta-button modal-cta" id="submitOrderBtn" onclick="submitOrder()">Submit Order</button>
+          <p class="order-policy-note">50% deposit required. All sales are final.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS OVERLAY -->
+  <div class="success-overlay" id="successOverlay" onclick="if(event.target===this)closeSuccess()">
+    <div class="success-petals" id="successPetals" aria-hidden="true"></div>
+    <div class="success-content">
+      <div class="success-checkmark-wrap">
+        <svg class="success-checkmark" viewBox="0 0 52 52">
+          <circle class="success-checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="success-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+      <h2 class="success-title">Order Received! 🌸</h2>
+      <p class="success-msg">You'll receive an email with payment instructions shortly.</p>
+      <p class="success-msg success-msg-2">A member of our team will reach out with an exact timeframe for your delivery.</p>
+      <button class="cta-button success-btn" onclick="closeSuccess()">Back to Browsing</button>
+    </div>
+  </div>
+
+  <script>
+    // Review Rotation
+    const reviews = [
+      { text: '"Absolutely stunning bouquet! She said yes instantly. Best decision ever."', author: '— Jessica M.' },
+      { text: '"The most beautiful roses I\'ve ever received. The wrapping was gorgeous!"', author: '— Samantha R.' },
+      { text: '"Ordered for my mom\'s birthday and she cried happy tears. Perfection!"', author: '— Ashley T.' },
+      { text: '"The proposal bouquet was breathtaking. Worth every single penny."', author: '— Brianna K.' },
+      { text: '"I keep coming back for every occasion. They never disappoint!"', author: '— Maria L.' },
+      { text: '"My baby shower bouquet was the centerpiece of the whole party!"', author: '— Daniella P.' },
+      { text: '"Custom lettering in baby\'s breath?! So unique. Absolutely loved it."', author: '— Stephanie V.' },
+      { text: '"Fast delivery and the bouquet looked even better than the pictures!"', author: '— Nicole A.' },
+      { text: '"Got the 100 rose bouquet for our anniversary. She was speechless."', author: '— Christina W.' },
+      { text: '"The butterflies and lights made it so magical. Highly recommend!"', author: '— Vanessa G.' }
+    ];
+    let currentReview = 0;
+    function rotateReview() {
+      const textEl = document.getElementById('trustReviewText');
+      const authorEl = document.getElementById('trustReviewAuthor');
+      const reviewEl = document.getElementById('trustReview');
+      if (!textEl || !authorEl || !reviewEl) return;
+      reviewEl.classList.add('review-fade-out');
+      setTimeout(() => {
+        currentReview = (currentReview + 1) % reviews.length;
+        textEl.textContent = reviews[currentReview].text;
+        authorEl.textContent = reviews[currentReview].author;
+        reviewEl.classList.remove('review-fade-out');
+      }, 400);
+    }
+    setInterval(rotateReview, 5000);
+
+    // Product data
+    const products = [
+      { img: '/images/bouquet-pink-proposal.jpg', title: '24 Rose Bouquet', price: '$80', desc: 'Pink roses, lilies & baby\'s breath with custom sash. Available in 1 color.' },
+      { img: '/images/bouquet-heic-2.jpg', title: '50 Rose Bouquet', price: '$150', desc: 'Red roses with baby\'s breath lettering & pearl trim. Up to 2 colors.' },
+      { img: '/images/bouquet-heic-3.jpg', title: '75 Rose Bouquet', price: '$180', desc: 'White roses with pearl accents & butterfly details. Up to 3 colors.' },
+      { img: '/images/bouquet-heic-4.jpg', title: '100 Rose Bouquet', price: '$260', desc: 'Red roses with designer ribbon & engraved mirror. Up to 4 colors.' },
+      { img: '/images/bouquet-heic-1.jpg', title: 'Garden Romance', price: 'Starting at $80', desc: 'Pink roses, gerbera daisies & stargazer lily with Dior wrap.' },
+      { img: '/images/bouquet-babyshower.jpg', title: 'Baby Shower', price: 'Starting at $110', desc: 'Themed bouquets with plush, sunflowers, roses & custom banner.' },
+      { img: '/images/bouquet-pink-closeup.jpg', title: 'Custom Bouquet', price: 'DM to customize', desc: 'More than 100 roses? Contact us for a custom quote.' }
+    ];
+
+    // Modal / Order Builder
+    let currentBasePrice = 0;
+
+    function openModal(index) {
+      const p = products[index];
+      document.getElementById('modalImage').src = p.img;
+      document.getElementById('modalImage').alt = p.title;
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalPrice').textContent = p.price;
+      document.getElementById('modalDesc').textContent = p.desc;
+
+      // Parse base price from product
+      const priceMatch = p.price.match(/\d+/);
+      currentBasePrice = priceMatch ? parseInt(priceMatch[0]) : 0;
+
+      // Reset all checkboxes
+      document.querySelectorAll('#addonGrid input, #compGrid input').forEach(cb => cb.checked = false);
+      // Reset contact fields
+      document.getElementById('orderName').value = '';
+      document.getElementById('orderEmail').value = '';
+      document.getElementById('orderPhone').value = '';
+      document.getElementById('orderNotes').value = '';
+      // Reset addon descriptions
+      document.querySelectorAll('.addon-item').forEach(item => item.classList.remove('has-desc'));
+      document.querySelectorAll('.addon-desc').forEach(d => d.value = '');
+      // Reset comp limit state
+      document.querySelectorAll('.comp-item').forEach(item => {
+        item.classList.remove('at-limit');
+        item.querySelector('input').disabled = false;
+      });
+      document.getElementById('compCount').textContent = '0';
+      // Reset image uploads
+      document.getElementById('uploadPreview').innerHTML = '';
+      uploadedFiles = [];
+      // Show upload only for custom inquiries
+      document.getElementById('uploadArea').style.display = p.title === 'Custom Bouquet' ? '' : 'none';
+
+      updateOrderTotal();
+      document.getElementById('productModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Live price calculation
+    function updateOrderTotal() {
+      let addonsTotal = 0;
+      document.querySelectorAll('#addonGrid input:checked').forEach(cb => {
+        addonsTotal += parseInt(cb.dataset.price) || 0;
+      });
+      const total = currentBasePrice + addonsTotal;
+      document.getElementById('orderTotalPrice').textContent = currentBasePrice > 0 ? `$${total}` : 'Custom';
+    }
+
+    // Image upload handler (iOS compatible)
+    let uploadedFiles = [];
+    function handleImageUpload(input) {
+      const preview = document.getElementById('uploadPreview');
+      const files = Array.from(input.files);
+      files.forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        uploadedFiles.push(file);
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const thumb = document.createElement('div');
+          thumb.className = 'upload-thumb';
+          thumb.innerHTML = `<img src="${e.target.result}" alt="Reference"><button class="upload-thumb-remove" onclick="event.stopPropagation();this.parentElement.remove();">×</button>`;
+          preview.appendChild(thumb);
+        };
+        reader.readAsDataURL(file);
+      });
+      // Reset input so same file can be re-selected
+      input.value = '';
+    }
+
+    // Attach change listeners to add-on checkboxes (price + description toggle)
+    document.querySelectorAll('#addonGrid input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', function() {
+        const item = this.closest('.addon-item');
+        if (this.checked) {
+          item.classList.add('has-desc');
+          // Focus the description input
+          const desc = item.querySelector('.addon-desc');
+          if (desc) setTimeout(() => desc.focus(), 50);
+        } else {
+          item.classList.remove('has-desc');
+          const desc = item.querySelector('.addon-desc');
+          if (desc) desc.value = '';
+        }
+        updateOrderTotal();
+      });
+    });
+
+    // Complimentary: enforce 2-item limit
+    const COMP_LIMIT = 2;
+    document.querySelectorAll('#compGrid input').forEach(cb => {
+      cb.addEventListener('change', function() {
+        const checked = document.querySelectorAll('#compGrid input:checked');
+        const count = checked.length;
+        document.getElementById('compCount').textContent = count;
+
+        if (count >= COMP_LIMIT) {
+          // Disable unchecked items
+          document.querySelectorAll('#compGrid input:not(:checked)').forEach(unchecked => {
+            unchecked.closest('.comp-item').classList.add('at-limit');
+            unchecked.disabled = true;
+          });
+        } else {
+          // Re-enable all
+          document.querySelectorAll('#compGrid .comp-item').forEach(item => {
+            item.classList.remove('at-limit');
+            item.querySelector('input').disabled = false;
+          });
+        }
+      });
+    });
+
+    // Submit Order
+    function submitOrder() {
+      const name = document.getElementById('orderName').value.trim();
+      const email = document.getElementById('orderEmail').value.trim();
+      if (!name || !email) {
+        // Highlight empty required fields
+        if (!name) document.getElementById('orderName').style.borderColor = '#ff4060';
+        if (!email) document.getElementById('orderEmail').style.borderColor = '#ff4060';
+        return;
+      }
+
+      // Close modal & show success
+      closeModal();
+      showSuccess();
+    }
+
+    // Success Overlay
+    function showSuccess() {
+      const overlay = document.getElementById('successOverlay');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      spawnSuccessPetals();
+    }
+
+    function closeSuccess() {
+      const overlay = document.getElementById('successOverlay');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      // Clear petals
+      document.getElementById('successPetals').innerHTML = '';
+    }
+
+    // Petal burst animation
+    function spawnSuccessPetals() {
+      const container = document.getElementById('successPetals');
+      container.innerHTML = '';
+      for (let i = 0; i < 24; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'success-petal';
+        const angle = (i / 24) * Math.PI * 2;
+        const dist = 60 + Math.random() * 80;
+        const tx = Math.cos(angle) * dist;
+        const ty = Math.sin(angle) * dist;
+        petal.style.setProperty('--tx', tx + 'px');
+        petal.style.setProperty('--ty', ty + 'px');
+        petal.style.animationDelay = (Math.random() * 0.4) + 's';
+        petal.style.width = (8 + Math.random() * 8) + 'px';
+        petal.style.height = (10 + Math.random() * 10) + 'px';
+        container.appendChild(petal);
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        if (document.getElementById('successOverlay').classList.contains('active')) {
+          closeSuccess();
+        } else {
+          closeModal();
+        }
+      }
+    });
+
+    // Carousel
+    let carouselIndex = 0;
+    const track = document.getElementById('carouselTrack');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('carouselDots');
+
+    function getVisibleSlides() {
+      return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const visible = getVisibleSlides();
+      const maxIndex = Math.max(0, slides.length - visible);
+      for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === carouselIndex ? ' active' : '');
+        dot.onclick = () => goToSlide(i);
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function goToSlide(i) {
+      const visible = getVisibleSlides();
+      const max = Math.max(0, slides.length - visible);
+      carouselIndex = Math.max(0, Math.min(i, max));
+      const slideWidth = 100 / visible;
+      const offset = carouselIndex * slideWidth;
+      track.style.transform = `translateX(-${offset}%)`;
+      document.querySelectorAll('.carousel-dot').forEach((d, j) => d.classList.toggle('active', j === carouselIndex));
+    }
+
+    function moveCarousel(dir) { goToSlide(carouselIndex + dir); }
+
+    buildDots();
+    window.addEventListener('resize', () => { buildDots(); goToSlide(carouselIndex); });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const trackWrapper = track.parentElement;
+    trackWrapper.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+    trackWrapper.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) { moveCarousel(diff > 0 ? 1 : -1); }
+    }, {passive: true});
+
+    // ==================
+    // Splash Intro Logic
+    // ==================
+    (function() {
+      const overlay = document.getElementById('splash-overlay');
+      const logo = document.getElementById('splashLogo');
+      const isMobile = window.innerWidth < 768;
+      const desktopVid = document.getElementById('splashVideoDesktop');
+      const mobileVid = document.getElementById('splashVideoMobile');
+
+      // Skip if already seen this session
+      if (sessionStorage.getItem('splashSeen')) {
+        overlay.style.display = 'none';
+        return;
+      }
+
+      // Show correct video
+      const activeVid = isMobile ? mobileVid : desktopVid;
+      if (isMobile) {
+        desktopVid.style.display = 'none';
+      } else {
+        mobileVid.style.display = 'none';
+      }
+
+      // Prevent scrolling during splash
+      document.body.style.overflow = 'hidden';
+
+      // Speed up the video (8s video plays in ~4.4s)
+      activeVid.playbackRate = 1.8;
+      activeVid.play().catch(() => {});
+
+      // At 1.2s — bloom the logo slowly (2s CSS transition)
+      setTimeout(() => {
+        logo.classList.add('bloom');
+      }, 1200);
+
+      // At 4s — begin cinematic fade out (1.5s CSS transition)
+      setTimeout(() => {
+        overlay.classList.add('fade-out');
+        document.body.style.overflow = '';
+        sessionStorage.setItem('splashSeen', 'true');
+      }, 4000);
+
+      // Remove overlay from DOM after fade completes
+      overlay.addEventListener('transitionend', () => {
+        if (overlay.classList.contains('fade-out')) {
+          overlay.style.display = 'none';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

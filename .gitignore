@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.heic
+*.mov
+*.png
+*.PNG
+*.JPG
+*.mp4
+!public/**
