@@ -88,7 +88,7 @@ loader.load(
     roseContainer.userData.floatOffset = Math.random() * Math.PI * 2;
   },
   (xhr) => {
-    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    if (xhr.total > 0) console.log(Math.round(xhr.loaded / xhr.total * 100) + '% loaded');
   },
   (error) => {
     console.error('An error happened loading the GLTF', error);

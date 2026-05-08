@@ -65,10 +65,10 @@
 
   <!-- Splash Intro Overlay -->
   <div id="splash-overlay" class="splash-overlay">
-    <video id="splashVideoDesktop" class="splash-video splash-desktop" muted playsinline>
+    <video id="splashVideoDesktop" class="splash-video splash-desktop" autoplay muted playsinline preload="auto">
       <source src="/videos/intro-desktop.mp4" type="video/mp4">
     </video>
-    <video id="splashVideoMobile" class="splash-video splash-mobile" muted playsinline>
+    <video id="splashVideoMobile" class="splash-video splash-mobile" autoplay muted playsinline preload="auto">
       <source src="/videos/intro-mobile.mp4" type="video/mp4">
     </video>
     <div class="splash-logo-wrapper" id="splashLogo">
@@ -791,35 +791,81 @@
 
       // Show correct video
       const activeVid = isMobile ? mobileVid : desktopVid;
-      if (isMobile) {
-        desktopVid.style.display = 'none';
-      } else {
-        mobileVid.style.display = 'none';
-      }
+      const inactiveVid = isMobile ? desktopVid : mobileVid;
+      inactiveVid.style.display = 'none';
+      inactiveVid.pause();
+      inactiveVid.removeAttribute('src');
+      inactiveVid.load();
 
       // Prevent scrolling during splash
       document.body.style.overflow = 'hidden';
 
-      // Speed up the video (8s video plays in ~4.4s)
-      activeVid.playbackRate = 1.8;
-      activeVid.play().catch(() => { });
+      let splashStarted = false;
 
-      // At 1.2s — bloom the logo slowly (2s CSS transition)
-      setTimeout(() => {
-        logo.classList.add('bloom');
-      }, 1200);
+      function startSplashSequence() {
+        if (splashStarted) return;
+        splashStarted = true;
 
-      // At 4s — begin cinematic fade out (1.5s CSS transition)
+        // Speed up the video (8s video plays in ~4.4s)
+        try { activeVid.playbackRate = 1.8; } catch(e) {}
+
+        // At 1.2s — bloom the logo slowly (2s CSS transition)
+        setTimeout(() => {
+          logo.classList.add('bloom');
+        }, 1200);
+
+        // At 4s — begin cinematic fade out (1.5s CSS transition)
+        setTimeout(() => {
+          overlay.classList.add('fade-out');
+          document.body.style.overflow = '';
+          sessionStorage.setItem('splashSeen', 'true');
+        }, 4000);
+      }
+
+      // Try to play the video — iOS Safari needs autoplay+muted+playsinline
+      const playPromise = activeVid.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // Video started playing successfully
+          try { activeVid.playbackRate = 1.8; } catch(e) {}
+          startSplashSequence();
+        }).catch(() => {
+          // Video autoplay was blocked (iOS restriction)
+          // Still show the splash with just the logo animation on black bg
+          activeVid.style.display = 'none';
+          startSplashSequence();
+        });
+      } else {
+        // Older browser — just start the sequence
+        startSplashSequence();
+      }
+
+      // Backup: if video fires canplay/loadeddata, try playing again
+      activeVid.addEventListener('canplay', function onCanPlay() {
+        activeVid.removeEventListener('canplay', onCanPlay);
+        if (!splashStarted) {
+          activeVid.play().then(() => {
+            try { activeVid.playbackRate = 1.8; } catch(e) {}
+            startSplashSequence();
+          }).catch(() => {
+            startSplashSequence();
+          });
+        }
+      });
+
+      // Safety net: if nothing fires in 1.5s, start anyway
       setTimeout(() => {
-        overlay.classList.add('fade-out');
-        document.body.style.overflow = '';
-        sessionStorage.setItem('splashSeen', 'true');
-      }, 4000);
+        if (!splashStarted) {
+          startSplashSequence();
+        }
+      }, 1500);
 
       // Remove overlay from DOM after fade completes
       overlay.addEventListener('transitionend', () => {
         if (overlay.classList.contains('fade-out')) {
           overlay.style.display = 'none';
+          // Clean up video resources
+          activeVid.pause();
         }
       });
     })();
