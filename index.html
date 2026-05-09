@@ -42,6 +42,46 @@
 </head>
 
 <body>
+  <!-- Global Background Video (crossfade loop) -->
+  <video class="global-bg-video global-bg-video-a" autoplay muted playsinline>
+    <source src="/videos/flowersfallingintro.mp4" type="video/mp4">
+  </video>
+  <video class="global-bg-video global-bg-video-b" autoplay muted playsinline style="opacity:0;">
+    <source src="/videos/flowersfallingintro.mp4" type="video/mp4">
+  </video>
+  <div class="global-bg-overlay"></div>
+
+  <script>
+    // Seamless crossfade loop — no hard restart jump
+    (function() {
+      const vidA = document.querySelector('.global-bg-video-a');
+      const vidB = document.querySelector('.global-bg-video-b');
+      const FADE_TIME = 1.5; // seconds before end to start crossfade
+      let active = vidA, standby = vidB;
+
+      function onTimeUpdate() {
+        if (active.duration && active.currentTime >= active.duration - FADE_TIME) {
+          // Start crossfade
+          standby.currentTime = 0;
+          standby.play().catch(() => {});
+          standby.style.transition = 'opacity ' + FADE_TIME + 's ease';
+          standby.style.opacity = '1';
+          active.style.transition = 'opacity ' + FADE_TIME + 's ease';
+          active.style.opacity = '0';
+
+          // Swap roles
+          const tmp = active;
+          active = standby;
+          standby = tmp;
+        }
+      }
+
+      vidA.addEventListener('timeupdate', onTimeUpdate);
+      vidB.addEventListener('timeupdate', onTimeUpdate);
+      vidB.pause();
+    })();
+  </script>
+
   <script type="module" src="./main.js"></script>
 
   <!-- Petals -->
@@ -133,6 +173,40 @@
               decision ever."</p>
             <span class="trust-review-author" id="trustReviewAuthor">— Jessica M.</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="scroll-section how-it-works-section">
+      <div class="section-header">
+        <p class="section-label">Simple & Sweet</p>
+        <h2>How It Works</h2>
+      </div>
+      <div class="hiw-steps">
+        <div class="hiw-step">
+
+          <div class="hiw-number">01</div>
+          <h3>Choose Your Bouquet</h3>
+          <p>Browse our collections or send us a reference photo for a fully custom creation.</p>
+        </div>
+        <div class="hiw-connector" aria-hidden="true">
+          <svg viewBox="0 0 60 20" fill="none"><path d="M0 10 Q30 0 60 10" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/></svg>
+        </div>
+        <div class="hiw-step">
+
+          <div class="hiw-number">02</div>
+          <h3>Customize & Confirm</h3>
+          <p>Pick your colors, add-ons, and personal touches. We'll send you a quote within hours.</p>
+        </div>
+        <div class="hiw-connector" aria-hidden="true">
+          <svg viewBox="0 0 60 20" fill="none"><path d="M0 10 Q30 20 60 10" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/></svg>
+        </div>
+        <div class="hiw-step">
+
+          <div class="hiw-number">03</div>
+          <h3>Delivered with Love</h3>
+          <p>Same-day delivery across Long Island — right to their doorstep or your event.</p>
         </div>
       </div>
     </section>
@@ -316,10 +390,6 @@
 
     <!-- CONTACT -->
     <section id="contact" class="scroll-section contact-section">
-      <video class="contact-bg-video" autoplay muted loop playsinline>
-        <source src="/videos/flowers-falling.mp4" type="video/mp4">
-      </video>
-      <div class="contact-overlay"></div>
       <div class="contact-content glass-card">
         <h2>Let's Create Something Beautiful</h2>
         <p>Fill out the form below or give us a call.</p>
@@ -807,7 +877,7 @@
         splashStarted = true;
 
         // Speed up the video (8s video plays in ~4.4s)
-        try { activeVid.playbackRate = 1.8; } catch(e) {}
+        try { activeVid.playbackRate = 1.8; } catch (e) { }
 
         // At 1.2s — bloom the logo slowly (2s CSS transition)
         setTimeout(() => {
@@ -827,7 +897,7 @@
       if (playPromise !== undefined) {
         playPromise.then(() => {
           // Video started playing successfully
-          try { activeVid.playbackRate = 1.8; } catch(e) {}
+          try { activeVid.playbackRate = 1.8; } catch (e) { }
           startSplashSequence();
         }).catch(() => {
           // Video autoplay was blocked (iOS restriction)
@@ -845,7 +915,7 @@
         activeVid.removeEventListener('canplay', onCanPlay);
         if (!splashStarted) {
           activeVid.play().then(() => {
-            try { activeVid.playbackRate = 1.8; } catch(e) {}
+            try { activeVid.playbackRate = 1.8; } catch (e) { }
             startSplashSequence();
           }).catch(() => {
             startSplashSequence();

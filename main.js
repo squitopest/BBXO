@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // 1. Setup Scene, Camera, Renderer
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#fff0f5'); // Pastel light pink background
+// No background — let the global video show through
 scene.fog = new THREE.FogExp2('#fff0f5', 0.03);
 
 const camera = new THREE.PerspectiveCamera(
@@ -16,7 +16,8 @@ const camera = new THREE.PerspectiveCamera(
 // Move camera a bit closer and higher
 camera.position.set(0, 2, 5);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setClearColor(0x000000, 0);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -70,7 +71,7 @@ loader.load(
     pivotGroup.scale.set(scale, scale, scale);
     
     // Tilt the pivot group to show the bloom face (flipped)
-    pivotGroup.rotation.x = Math.PI / 2.2; 
+    pivotGroup.rotation.x = Math.PI / 3.5; 
     pivotGroup.rotation.y = Math.PI; // Flip 180° to show the front
 
     // Traverse and update materials
